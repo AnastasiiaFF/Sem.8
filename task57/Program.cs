@@ -32,7 +32,7 @@ void PrintMatrix(int[,] matrix)
     }
 }
 
-int[] MatrixToArray(int [,] matrix)
+int[] Array2dToArray(int[,] matrix)
 {
     int c = 0;
     int[] array = new int[matrix.GetLength(0) * matrix.GetLength(1)];
@@ -41,6 +41,7 @@ int[] MatrixToArray(int [,] matrix)
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
             array[c] = matrix[i, j];
+            c += 1;
         }
     }
     return array;
@@ -54,7 +55,6 @@ void PrintArray(int[] array)
     {
         if (i < array.Length - 1) Console.Write($"{array[i]} ");
         else Console.WriteLine($"{array[i]}]");
-
     }
 }
 
@@ -65,21 +65,23 @@ void SumElemArray(int[] array)
     int currentNum = array[0];
     for (int i = 1; i < array.Length; i++)
     {
-        if(array[i] == currentNum) count ++;
-        else 
+        if (array[i] == currentNum) count++;
+        else
         {
             Console.WriteLine($"число {currentNum} встречается {count} раз.");
             currentNum = array[i];
             count = 1;
         }
     }
+    Console.WriteLine($"число {currentNum} встречается {count} раз.");
 }
 
-int[,] array2d = CreateMatrixRndInt(3, 4, 1, 5);
+int[,] array2d = CreateMatrixRndInt(3, 4, 1, 50);
 PrintMatrix(array2d);
-int[] array = MatrixToArray(array2d);
+int[] array = Array2dToArray(array2d);
 Console.WriteLine();
 PrintArray(array);
 Console.WriteLine();
 Array.Sort(array);
+PrintArray(array);
 SumElemArray(array);
