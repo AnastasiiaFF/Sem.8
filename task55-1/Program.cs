@@ -36,7 +36,7 @@ void PrintMatrix(int[,] matrix)
 
 void ReplaceRowsToColumns(int[,] matrix)
 {
-for (int i = 0; i < matrix.GetLength(0); i++)
+for (int i = 0; i < matrix.GetLength(0)-1; i++)
 {
     for (int j = i; j < matrix.GetLength(1); j++)
     {
